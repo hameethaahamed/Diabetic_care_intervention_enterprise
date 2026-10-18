@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Care Intervention | Diabetes Patient Management</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="dashboard.html" aria-label="Diabetes Patient Management dashboard">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 48 48" focusable="false">
+              <rect x="1" y="1" width="46" height="46" rx="13" fill="currentColor" />
+              <path d="M8 25h8l4-9 7 17 4-8h9" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+            </svg>
+          </span>
+          <span class="brand-name">Diabetes Patient Management</span>
+        </a>
+        <nav class="main-menu" aria-label="Main menu">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="index.html">Add encounter</a>
+          <a href="update.html" aria-current="page">Update interventions</a>
+          <a href="search.html">Search encounters</a>
+        </nav>
+      </header>
+
+      <nav class="page-navigation" aria-label="Main navigation">
+        <a class="secondary-button" href="index.html">← Back to home</a>
+      </nav>
+
+      <section class="panel" aria-labelledby="update-title">
+        <div class="panel-heading">
+          <div>
+            <h2 id="update-title">Update care intervention</h2>
+            <p class="panel-description">Enter the encounter and patient numbers, then update the intervention details.</p>
+          </div>
+        </div>
+
+        <form id="update-form" class="patient-form">
+          <div class="field-group">
+            <label for="encounterId">Encounter ID</label>
+            <input id="encounterId" name="encounter_id" type="number" min="1" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="patientNumber">Patient Number</label>
+            <input id="patientNumber" name="patient_nbr" type="number" min="1" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="status">Status</label>
+            <div class="select-box">
+              <select id="status" name="status" required>
+                <option value="" selected disabled>Select intervention status</option>
+                <option value="PENDING_REVIEW">Pending review</option>
+                <option value="ASSIGNED">Assigned</option>
+                <option value="CONTACTED">Contacted</option>
+                <option value="FOLLOW_UP_SCHEDULED">Follow-up scheduled</option>
+                <option value="CLOSED">Closed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="assignedTo">Assigned To</label>
+            <div class="select-box">
+              <select id="assignedTo" name="assigned_to" required>
+                <option value="" selected disabled>Select care team role</option>
+                <option value="Care Manager">Care Manager</option>
+                <option value="Diabetes Educator">Diabetes Educator</option>
+                <option value="Registered Nurse">Registered Nurse</option>
+                <option value="Clinical Pharmacist">Clinical Pharmacist</option>
+                <option value="Social Worker">Social Worker</option>
+                <option value="Unassigned">Unassigned</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" maxlength="5000" placeholder="Add intervention notes"></textarea>
+          </div>
+
+          <div class="button-row">
+            <p id="update-status" class="form-status" role="status" aria-live="polite"></p>
+            <button type="submit" class="add-button">Update intervention</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel encounter-panel" aria-labelledby="interventions-title">
+        <div class="panel-heading encounter-heading">
+          <div>
+            <p class="eyebrow" id="interventions-title">CARE INTERVENTIONS</p>
+            <p class="panel-description">Existing care-intervention records. Select an encounter to load it into the form.</p>
+          </div>
+        </div>
+        <p id="interventions-status" class="table-status" role="status" aria-live="polite">
+          Loading care interventions…
+        </p>
+        <div class="table-wrapper">
+          <table class="encounter-table">
+            <thead>
+              <tr>
+                <th scope="col">Encounter ID</th>
+                <th scope="col">Patient Number</th>
+                <th scope="col">Status</th>
+                <th scope="col">Assigned To</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody id="intervention-list"></tbody>
+          </table>
+        </div>
+        <div class="pagination-controls">
+          <button id="previous-interventions" type="button" class="secondary-button" disabled>Previous</button>
+          <span id="interventions-page">Page 1</span>
+          <button id="next-interventions" type="button" class="secondary-button" disabled>Next</button>
+        </div>
+      </section>
+    </main>
+    <script src="../JS/update.js" defer></script>
+  </body>
+</html>

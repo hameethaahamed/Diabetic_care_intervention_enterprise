@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Patients | Diabetes Patient Management</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="dashboard.html" aria-label="Diabetes Patient Management dashboard">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 48 48" focusable="false">
+              <rect x="1" y="1" width="46" height="46" rx="13" fill="currentColor" />
+              <path d="M8 25h8l4-9 7 17 4-8h9" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+            </svg>
+          </span>
+          <span class="brand-name">Diabetes Patient Management</span>
+        </a>
+        <nav class="main-menu" aria-label="Main menu">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="index.html">Add encounter</a>
+          <a href="update.html">Update interventions</a>
+          <a href="search.html" aria-current="page">Search encounters</a>
+        </nav>
+      </header>
+
+      <nav class="page-navigation" aria-label="Main navigation">
+        <a class="secondary-button" href="index.html">← Back to home</a>
+      </nav>
+
+      <section class="panel" aria-labelledby="search-title">
+        <div class="panel-heading">
+          <div>
+            <h2 id="search-title">Search for a patient</h2>
+            <p class="panel-description">Filter encounters by patient number, risk score, risk level, or any combination.</p>
+          </div>
+        </div>
+
+        <form id="search-form" class="patient-form search-form">
+          <div class="field-group">
+            <label for="patientNumber">Patient ID</label>
+            <input id="patientNumber" name="patient_nbr" type="number" min="1" step="1" placeholder="Enter patient number" />
+          </div>
+
+          <div class="field-group">
+            <label for="riskScore">Risk Score</label>
+            <input id="riskScore" name="risk_score" type="number" min="0" step="1" placeholder="Enter risk score" />
+          </div>
+
+          <div class="field-group">
+            <label for="riskLevel">Risk Level</label>
+            <div class="select-box">
+              <select id="riskLevel" name="risk_level">
+                <option value="">Any risk level</option>
+                <option value="LOW">Low</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HIGH">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <p id="search-status" class="form-status" role="status" aria-live="polite"></p>
+            <button type="reset" class="secondary-button">Clear</button>
+            <button type="submit" class="add-button">Search <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel encounter-panel" aria-labelledby="results-title">
+        <div class="panel-heading encounter-heading">
+          <div>
+            <p class="eyebrow" id="results-title">SEARCH RESULTS</p>
+            <p class="panel-description">Matching patient encounter and risk details.</p>
+          </div>
+        </div>
+        <p id="results-status" class="table-status" role="status" aria-live="polite">
+          Enter one or more filters and select Search.
+        </p>
+        <div class="table-wrapper">
+          <table class="encounter-table">
+            <thead>
+              <tr>
+                <th scope="col">Encounter Number</th>
+                <th scope="col">Patient Number</th>
+                <th scope="col">Age</th>
+                <th scope="col">Risk Score</th>
+                <th scope="col">Risk Level</th>
+              </tr>
+            </thead>
+            <tbody id="search-results"></tbody>
+          </table>
+        </div>
+        <div class="pagination-controls">
+          <button id="previous-page" type="button" class="secondary-button" disabled>Previous</button>
+          <span id="page-number">Page 1</span>
+          <button id="next-page" type="button" class="secondary-button" disabled>Next</button>
+        </div>
+      </section>
+    </main>
+    <script src="../JS/search.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes Patient Management</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="dashboard.html" aria-label="Diabetes Patient Management dashboard">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 48 48" focusable="false">
+              <rect x="1" y="1" width="46" height="46" rx="13" fill="currentColor" />
+              <path d="M8 25h8l4-9 7 17 4-8h9" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+            </svg>
+          </span>
+          <span class="brand-name">Diabetes Patient Management</span>
+        </a>
+        <nav class="main-menu" aria-label="Main menu">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="index.html" aria-current="page">Add encounter</a>
+          <a href="update.html">Update interventions</a>
+          <a href="search.html">Search encounters</a>
+        </nav>
+      </header>
+
+      <section class="panel" aria-labelledby="form-title">
+        <div class="panel-heading">
+          <div>
+            <h2 id="form-title">Add patient encounter details</h2>
+          </div>
+        </div>
+
+        <form class="patient-form">
+          <div class="field-group">
+            <label for="encounterId">Encounter ID</label>
+            <input id="encounterId" type="number" name="encounter_id" min="1" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="patientNbr">Patient Number</label>
+            <input id="patientNbr" type="number" name="patient_nbr" min="1" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="age">Age Group</label>
+            <div class="select-box">
+              <select id="age" name="age" required>
+                <option value="" selected disabled>Select an age group</option>
+                <option value="[0-10)">[0-10)</option>
+                <option value="[10-20)">[10-20)</option>
+                <option value="[20-30)">[20-30)</option>
+                <option value="[30-40)">[30-40)</option>
+                <option value="[40-50)">[40-50)</option>
+                <option value="[50-60)">[50-60)</option>
+                <option value="[60-70)">[60-70)</option>
+                <option value="[70-80)">[70-80)</option>
+                <option value="[80-90)">[80-90)</option>
+                <option value="[90-100)">[90-100)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="readmitted">Readmitted</label>
+            <div class="select-box">
+              <select id="readmitted" name="readmitted" required>
+                <option value="" selected disabled>Select readmission outcome</option>
+                <option value="NO">NO</option>
+                <option value="&lt;30">&lt;30 days</option>
+                <option value="&gt;30">&gt;30 days</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="hospitalDays">Time in Hospital (days)</label>
+            <input id="hospitalDays" type="number" name="time_in_hospital" min="0" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="inpatientVisits">Inpatient Visits</label>
+            <input id="inpatientVisits" type="number" name="number_inpatient" min="0" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="emergencyVisits">Emergency Visits</label>
+            <input id="emergencyVisits" type="number" name="number_emergency" min="0" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="outpatientVisits">Outpatient Visits</label>
+            <input id="outpatientVisits" type="number" name="number_outpatient" min="0" step="1" required />
+          </div>
+
+          <div class="field-group">
+            <label for="medications">Number of Medications</label>
+            <input id="medications" type="number" name="num_medications" min="0" step="1" required />
+          </div>
+
+          <div class="button-row">
+            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+            <button type="submit" class="add-button">Add encounter</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel encounter-panel" aria-labelledby="encounter-list-title">
+        <div class="panel-heading encounter-heading">
+          <div>
+            <p class="eyebrow" id="encounter-list-title">ENCOUNTER LIST</p>
+            <p class="panel-description">Patient demographics and calculated risk details.</p>
+          </div>
+        </div>
+        <p id="encounter-status" class="table-status" role="status" aria-live="polite">
+          Loading encounters…
+        </p>
+        <div class="table-wrapper">
+          <table class="encounter-table">
+            <thead>
+              <tr>
+                <th scope="col">Encounter Number</th>
+                <th scope="col">Patient Number</th>
+                <th scope="col">Age</th>
+                <th scope="col">Risk Score</th>
+                <th scope="col">Risk Level</th>
+              </tr>
+            </thead>
+            <tbody id="encounter-list"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+    <script src="../JS/app.js" defer></script>
+  </body>
+</html>

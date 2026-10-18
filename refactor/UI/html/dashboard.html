@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | Diabetes Patient Management</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="dashboard.html" aria-label="Diabetes Patient Management dashboard">
+          <span class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 48 48" focusable="false">
+              <rect x="1" y="1" width="46" height="46" rx="13" fill="currentColor" />
+              <path d="M8 25h8l4-9 7 17 4-8h9" fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+            </svg>
+          </span>
+          <span class="brand-name">Diabetes Patient Management</span>
+        </a>
+        <nav class="main-menu" aria-label="Main menu">
+          <a href="dashboard.html" aria-current="page">Dashboard</a>
+          <a href="index.html">Add encounter</a>
+          <a href="update.html">Update interventions</a>
+          <a href="search.html">Search encounters</a>
+        </nav>
+      </header>
+
+      <section class="dashboard-intro" aria-labelledby="dashboard-title">
+        <div>
+          <p class="eyebrow">CARE OVERVIEW</p>
+          <h1 id="dashboard-title">Dashboard</h1>
+          <p class="panel-description">A summary of diabetes encounters and care-management activity.</p>
+        </div>
+        <button id="refresh-dashboard" class="secondary-button" type="button">Refresh data</button>
+      </section>
+
+      <p id="dashboard-status" class="dashboard-status" role="status" aria-live="polite">Loading dashboard metrics…</p>
+
+      <section class="metrics-grid" aria-label="Diabetes care metrics" aria-busy="true">
+        <article class="metric-card metric-card-primary">
+          <p class="metric-label">Total encounters</p>
+          <p id="metric-total" class="metric-value">—</p>
+          <p class="metric-caption">Diabetes patient records</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">High-risk population</p>
+          <p id="metric-high-risk" class="metric-value">—</p>
+          <p id="metric-high-risk-percent" class="metric-caption">— of total encounters</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">Pending care queue</p>
+          <p id="metric-pending" class="metric-value">—</p>
+          <p class="metric-caption">Interventions awaiting review</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">Readmitted within 30 days</p>
+          <p id="metric-readmitted" class="metric-value">—</p>
+          <p id="metric-readmission-rate" class="metric-caption">— overall readmission rate</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">High-risk 30-day readmissions</p>
+          <p id="metric-high-risk-readmitted" class="metric-value">—</p>
+          <p class="metric-caption">Historical outcomes in high-risk records</p>
+        </article>
+      </section>
+
+      <section class="dashboard-actions" aria-labelledby="actions-title">
+        <div class="panel-heading">
+          <div>
+            <h2 id="actions-title">Quick actions</h2>
+            <p class="panel-description">Go directly to a patient-management task.</p>
+          </div>
+        </div>
+        <div class="action-links">
+          <a class="action-link" href="index.html">
+            <span class="action-link-title">Add encounter</span>
+            <span class="action-link-description">Create a patient encounter and calculate its risk.</span>
+            <span class="action-link-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="action-link" href="update.html">
+            <span class="action-link-title">Update interventions</span>
+            <span class="action-link-description">Review and update care-intervention records.</span>
+            <span class="action-link-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="action-link" href="search.html">
+            <span class="action-link-title">Search encounters</span>
+            <span class="action-link-description">Find patients by ID, risk score, or risk level.</span>
+            <span class="action-link-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+      <p class="dashboard-disclaimer">Educational prototype metrics; risk rules are illustrative and are not clinically validated.</p>
+    </main>
+    <script src="../JS/dashboard.js" defer></script>
+  </body>
+</html>
